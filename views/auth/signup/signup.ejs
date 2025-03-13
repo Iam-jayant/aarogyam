@@ -104,21 +104,17 @@
     </style>
 </head>
 <body>
-    <div class="container d-flex min-vh-100 min-vw-100">
-        <!-- Image Section -->
-        <div class="image-section">
-            <img src="/signup-image.png" class="w-100 h-100" alt="signup-image">
-        </div>
-    
-        <!-- Signup Role Section -->
-        <div class="container text-center p-5 signup-role-container">
-            <div class="signup-role-inner-container">
-                <h2 class="mb-4">Sign up Role :</h2>
-                <div class="user-role">
-                    <p><a href="/auth/signup/doctor" class="btn btn-lg btn-primary rounded-pill ">Doctor</a></p>
-                    <p><a href="/auth/signup/patient" class="btn btn-lg btn-success rounded-pill">Patient</a></p>
-                </div>
-            </div>
+    <div class="signup-container">
+        <!-- Image on top -->
+        <div class="signup-image">
+            <img src="/signup-image.png" alt="Signup">
+        </div>  
+
+        <!-- Role Selection Below Image -->
+        <h2>Sign up Role</h2>
+        <div class="user-role">
+            <a href="/auth/signup/doctor">Doctor</a>
+            <a href="/auth/signup/patient">Patient</a>
         </div>
     </div>
 
