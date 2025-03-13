@@ -1,26 +1,183 @@
-<%- layout("/layouts/boilerplate") %>
 
-<div class="row mt-3">
-    <h1 class="col-8 offset-2">Log in</h1>
-    <div class="col-8 offset-2 min-vh-100">
-        <form action="/auth/login" method="POST" class="needs-validation" novalidate>
-            <div class="mb-3">
-                <label for="username" class="form-label">Username</label>
-                <input type="text" name="username" id="username" placeholder="Enter username" class="form-control" required>
-            </div>
-            <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" name="password" id="password" placeholder="Enter password" class="form-control" required autocomplete="current-password">
-            </div>
-            <div class="d-flex justify-content-center">
-                <button type="submit" class="btn btn-primary">Log in</button>
-            </div>
 
-            <!-- <div class="d-flex justify-content-center my-3">
-                <a href="/aarogyam/auth/google" class="btn btn-danger" aria-disabled="">
-                    <i class="fab fa-google"></i> Log in with Google
-                </a>
-            </div> -->
-        </form>
+<div class="screen-1">
+
+  <!-- Login Form -->
+  <form action="/login" method="POST">
+    
+    <!-- Username Field -->
+    <div class="email">
+      <label for="username">Username</label>
+      <div class="sec-2">
+        <!-- Ionicon (optional) -->
+        <ion-icon name="mail-outline"></ion-icon>
+        <input
+          type="text"
+          name="username"
+          id="username"
+          placeholder="Enter your username"
+          required
+        />
+      </div>
     </div>
-</div> 
+
+    <!-- Password Field -->
+    <div class="password">
+      <label for="password">Password</label>
+      <div class="sec-2">
+        <ion-icon name="lock-closed-outline"></ion-icon>
+        <input
+          class="pas"
+          type="password"
+          name="password"
+          id="password"
+          placeholder="············"
+          required
+        />
+        <!-- Show/Hide Icon (optional) -->
+        <ion-icon class="show-hide" name="eye-outline"></ion-icon>
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="login">Log in</button>
+  </form>
+
+  <!-- Footer Links -->
+  <div class="footer" style="display: flex; justify-content: center; align-items: center; text-align: center; width: 100%; margin-top: 1rem;">
+    <span><a href="/signup">Sign up</a></span>
+</div>
+</div>
+
+<!-- Ionicons (optional) -->
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+<style lang="scss">
+  /* SCSS or plain CSS. For plain CSS, remove SCSS mixins or variables. */
+  
+  /* Variables (convert SCSS to CSS if needed) */
+  /* e.g., $p: hsl(213deg 85% 97%); $s: hsl(233deg 36% 38%); */
+  /* We'll just inline them here as fallback or convert them. */
+
+  /* Root fallback variables */
+  :root {
+    --p: hsl(213, 85%, 97%);
+    --s: #0d9488;
+  }
+
+  * {
+    font-family: "Poppins", sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    user-select: none;
+    overflow-y: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #0d948942;
+    height: 100vh;
+  }
+
+  .screen-1 {
+    background: var(--p);
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    border-radius: 30px;
+    box-shadow: 0 0 2em hsl(231, 62%, 94%);
+    gap: 2em;
+
+    /* Logo */
+    .logo {
+      margin-top: -3em;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Form fields */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5em;
+    }
+
+    .email,
+    .password {
+      background: #fff;
+      box-shadow: 0 0 2em hsl(231, 62%, 94%);
+      padding: 1em;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5em;
+      border-radius: 20px;
+      color: hsl(0, 0%, 30%);
+      label {
+        font-weight: 600;
+        margin-bottom: 0.5em;
+      }
+      .sec-2 {
+        display: flex;
+        align-items: center;
+        gap: 0.5em;
+        ion-icon {
+          color: hsl(0, 0%, 30%);
+        }
+        input {
+          outline: none;
+          border: none;
+          flex: 1;
+          &::placeholder {
+            color: hsl(0, 0%, 0%);
+            font-size: 0.9em;
+          }
+        }
+        .show-hide {
+          cursor: pointer;
+        }
+      }
+    }
+
+    /* Login Button */
+    .login {
+      padding: 1em;
+      background: var(--s);
+      color: #fff;
+      border: none;
+      border-radius: 30px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+      &:hover {
+        background-color: hsl(233, 36%, 32%);
+      }
+    }
+
+    /* Footer */
+    .footer {
+      display: flex;
+      font-size: 0.8em;
+      color: hsl(0, 0%, 37%);
+      gap: 10em;
+      padding-bottom: 2em;
+      span {
+        cursor: pointer;
+        a {
+          color: hsl(0, 0%, 37%);
+          text-decoration: none;
+        }
+        a:hover {
+          text-decoration: underline;
+        }
+      }
+      @media (max-width: 500px) {
+        gap: 4em;
+      }
+    }
+  }
+</style>

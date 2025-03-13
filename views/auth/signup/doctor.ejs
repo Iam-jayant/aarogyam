@@ -1,78 +1,251 @@
-<%- layout("/layouts/boilerplate") %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Sign Up</title>
 
-<div class="container-fluid row mt-3">
-    <h1 class="col-8 offset-2">Doctor Sign up</h1>
-    <div class="col-8 offset-2 min-vh-100">
-        <form action="/auth/signup/doctor" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
-            <!-- Email -->
-            <div class="mb-3">
-                <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
-                <input type="email" name="doctor[email]" id="email" placeholder="Enter email" class="form-control" required>
-            </div>
-            
-            <div class="row">
-                <!-- Username -->
-                <div class="mb-3 col-6">
-                    <label for="username" class="form-label">Username <span class="text-danger">*</span></label>
-                    <input type="text" name="doctor[username]" id="username" placeholder="Enter username" class="form-control" required>
-                </div>
-                <!-- Password -->
-                <div class="mb-3 col-6">
-                    <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
-                    <input type="password" name="doctor[password]" id="password" placeholder="Enter password" class="form-control" required autocomplete="new-password">
-                </div>
-            </div>
-        
-            <div class="row">
-                <!-- Specialization -->
-                <div class="mb-3 col-6">
-                    <label for="specialization" class="form-label">Specialization <span class="text-danger">*</span></label>
-                    <input type="text" name="doctor[specialization]" id="specialization" placeholder="Enter specialization" class="form-control" required>
-                </div>
-                <!-- Experience -->
-                <div class="mb-3 col-6">
-                    <label for="experience" class="form-label">Years of Experience <span class="text-danger">*</span></label>
-                    <input type="number" name="doctor[experience]" id="experience" placeholder="Enter years of experience" class="form-control" required>
-                </div>
-            </div>
-        
-            <div class="row">
-                <!-- Hospital -->
-                <div class="mb-3 col-6">
-                    <label for="hospital" class="form-label">Hospital Name <span class="text-danger">*</span></label>
-                    <input type="text" name="doctor[hospital]" id="hospital" placeholder="Enter hospital name" class="form-control" required>
-                </div>
-                <!-- Consultant Fees -->
-                <div class="mb-3 col-6">
-                    <label for="consultantFees" class="form-label">Consultant Fees <span class="text-danger">*</span></label>
-                    <input type="number" name="doctor[consultantFees]" id="consultantFees" placeholder="Enter fees" class="form-control" required>
-                </div>
-            </div>
-        
-            <div class="row">
-                <!-- Phone -->
-                <div class="mb-3">
-                    <label for="phone" class="form-label">Phone Number <span class="text-danger">*</span></label>
-                    <input type="text" name="doctor[phone]" id="phone" placeholder="Enter phone number" class="form-control" required>
-                </div>
-            </div>
-        
-            <div class="mb-3">
-                <!-- Profile Image Upload -->
-                <label for="profile" class="form-label">Profile Image <span class="text-danger">*</span></label>
-                <input type="file" name="profile" id="profile" class="form-control" accept="image/*" required>
-            </div>
-        
-            <!-- Submit Button -->
-            <div class="d-flex justify-content-center">
-                <button type="submit" class="btn btn-primary">Sign up</button>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #C0E3E0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: #f0f6feab;
+            padding: 2em;
+            border-radius: 20px;
+            box-shadow: 0 0 2em rgba(0, 0, 0, 0.1);
+            width: 55%; /* Increased width */
+            max-width: 650px; /* Increased max-width */
+            text-align: center;
+        }
+
+
+        .profile-upload {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: auto;
+            cursor: pointer;
+            border: 3px solid #0d9488;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #e6f5f3;
+        }
+
+        .profile-upload img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .edit-icon {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            background: #0d9488;
+            color: white;
+            border-radius: 50%;
+            padding: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .form-title {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #333;
+            margin-top: 1em;
+        }
+
+        .input-box {
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            padding: 1em;
+            border-radius: 15px;
+            margin-top: 1em;
+            box-shadow: 0 0 2em rgba(0, 0, 0, 0.05);
+        }
+
+        .input-box ion-icon {
+            font-size: 1.2em;
+            color: #555;
+            margin-right: 10px;
+        }
+
+        input {
+            outline: none;
+            border: none;
+            flex: 1;
+            background: none;
+            font-size: 1em;
+            padding: 0.5em;
+        }
+
+        .row {
+            display: flex;
+            gap: 1em;
+            justify-content: space-between;
+        }
+
+        .row .input-box {
+            flex: 1;
+        }
+
+        .btn {
+            padding: 1em;
+            background: #0d9488;
+            color: #fff;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            width: 100%;
+            margin-top: 1em;
+        }
+
+        .btn:hover {
+            background-color: #0b7a6a;
+        }
+
+        .footer {
+            font-size: 0.9em;
+            color: hsl(0, 0%, 37%);
+            margin-top: 1em;
+        }
+
+        .footer a {
+            color: hsl(0, 0%, 37%);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+                padding: 1.5em;
+            }
+
+            .row {
+                flex-direction: column;
+                gap: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Profile Image Upload Circle -->
+    <div class="profile-upload">
+        <label for="profile">
+            <img id="profilePreview" src="/default-avatar.png" alt="Upload Image">
+            <ion-icon class="edit-icon" name="pencil-outline"></ion-icon>
+            <input type="file" name="profile" id="profile" accept="image/*" hidden>
+        </label>
+    </div>
+
+    <h2 class="form-title">Doctor Sign up</h2>
+
+    <form action="/signup/doctor" method="POST" enctype="multipart/form-data">
+
+        <!-- Email -->
+        <div class="input-box">
+            <!-- <ion-icon name="mail-outline"></ion-icon> -->
+            <input type="Name" name="doctor[email]" id="email" placeholder="Enter Name" required>
+        </div>
+        <div class="input-box">
+            <ion-icon name="mail-outline"></ion-icon>
+            <input type="email" name="doctor[email]" id="email" placeholder="Enter email" required>
+        </div>
+
+        <!-- Username & Password -->
+        <div class="row">
+            <div class="input-box">
+                <ion-icon name="person-outline"></ion-icon>
+                <input type="text" name="doctor[username]" id="username" placeholder="Enter username" required>
             </div>
 
-            <!-- <div class="d-flex justify-content-center my-3">
-                <a href="/aarogyam/auth/google" class="btn btn-danger">
-                    <i class="fab fa-google"></i> Sign up with Google
-                </a>
-            </div> -->
-        </form>        
+            <div class="input-box">
+                <ion-icon name="lock-closed-outline"></ion-icon>
+                <input type="password" name="doctor[password]" id="password" placeholder="Enter password" required>
+            </div>
+        </div>
+
+        <!-- Specialization & Experience -->
+        <div class="row">
+            <div class="input-box">
+                <input type="text" name="doctor[specialization]" id="specialization" placeholder="Enter specialization" required>
+            </div>
+
+            <div class="input-box">
+                <input type="number" name="doctor[experience]" id="experience" placeholder="Enter years of experience" required>
+            </div>
+        </div>
+
+        <!-- Hospital & Fees -->
+        <div class="row">
+            <div class="input-box">
+                <input type="text" name="doctor[hospital]" id="hospital" placeholder="Enter hospital name" required>
+            </div>
+
+            <div class="input-box">
+                <input type="number" name="doctor[consultantFees]" id="consultantFees" placeholder="Enter fees" required>
+            </div>
+        </div>
+
+        <!-- Phone Number -->
+        <div class="input-box">
+            <input type="text" name="doctor[phone]" id="phone" placeholder="Enter phone number" required>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn">Sign up</button>
+
+    </form>
+
+    <!-- Footer -->
+    <div class="footer">
+        <span>Already have an account? <a href="/login">Log in</a></span>
     </div>
 </div>
+
+<script>
+    document.getElementById("profile").addEventListener("change", function(event) {
+        const reader = new FileReader();
+        reader.onload = function() {
+            document.getElementById("profilePreview").src = reader.result;
+        };
+        reader.readAsDataURL(event.target.files[0]);
+    });
+</script>
+
+</body>
+</html>
