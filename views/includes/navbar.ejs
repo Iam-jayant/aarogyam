@@ -1,22 +1,125 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Apply Inter font */
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Navbar Styling */
+    .navbar {
+      padding: 10px 20px;
+    }
+
+    /* Brand (Aarogyam) */
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.5rem;
+      white-space: nowrap;
+    }
+
+    /* Button Styling */
+    .btn-custom {
+      background-color: #0d9488;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.3s ease;
+    }
+
+    .btn-custom:hover {
+      background-color: #0b8079;
+    }
+
+    .btn-outline-custom {
+      border: 2px solid #0d9488;
+      color: #0d9488;
+      background-color: transparent;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.3s ease;
+    }
+
+    .btn-outline-custom:hover {
+      background-color: #0d9488;
+      color: white;
+    }
+
+    /* Desktop view adjustments */
+    @media (min-width: 992px) {
+      .navbar-brand {
+        margin-left: 80px;
+      }
+      .navbar-right {
+        margin-right: 80px;
+      }
+    }
+
+    /* Mobile view adjustments */
+    @media (max-width: 991px) {
+      .navbar-brand {
+        margin-left: 10px;
+      }
+      .navbar-right {
+        display: none; /* Hide desktop buttons in mobile */
+      }
+      .navbar-nav {
+        text-align: center;
+      }
+      .nav-item {
+        padding: 5px 0;
+      }
+      .mobile-buttons {
+        text-align: center;
+        padding-top: 10px;
+      }
+
+      /* Fix Toggle Button Color */
+      .navbar-toggler {
+        border: none;
+      }
+
+      .navbar-toggler-icon {
+        filter: invert(25%) brightness(30%); /* Greyish black */
+      }
+    }
+  </style>
+</head>
+
+<nav class="navbar navbar-expand-lg sticky-top" style="background-color: #f8f9fa;">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/aarogyam"><b>Aarogyam</b></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent">
+    <!-- Brand -->
+    <a class="navbar-brand text-dark" href="/aarogyam">Aarogyam</a>
+
+    <!-- Mobile Toggle (Right Aligned) -->
+    <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" 
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" 
+      aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+
+    <!-- Navbar Links & Buttons -->
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav m-auto">
         <li class="nav-item">
-          <a class="nav-link" href="/aarogyam">Home</a>
+          <a class="nav-link text-dark" href="/aarogyam">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
+          <a class="nav-link text-dark" href="#">Features</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Support</a>
+          <a class="nav-link text-dark" href="#">About</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Contact</a>
+          <a class="nav-link text-dark" href="#">Contact</a>
         </li>
       </ul>
       <div class="user-options d-flex gap-3">
